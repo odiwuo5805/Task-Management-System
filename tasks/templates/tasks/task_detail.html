@@ -13,7 +13,7 @@
 
     <p>
         <strong>Status:</strong>
-        {% if task.is_complete %} Completed {% else %} Incomplete {% endif %}
+        {% if task.is_complete %} Completed {% else %} In progress {% endif %}
     </p>
 
     <a class="btn btn-primary" href="{% url 'task_update' task.pk %}"

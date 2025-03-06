@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
 
 <div class="text-center">
     <h1>Task List</h1>
@@ -6,17 +8,24 @@
     <a href="{% url 'task_create' %}" class="btn btn-primary">Add Task</a>
 </div>
 
+<!-- Form for search functionality -->
+<form method="get" action="{% url 'task_list' %}" class="mb-3">
+    <input
+        type="text"
+        id="search-input"
+        name="q"
+        placeholder="Search tasks"
+        value="{{ request.GET.q }}"
+        class="form-control"
+    />
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>Image</th>
             <th>
                 <a class="inline" href="?order_by=title">Name</a>
-                <input
-                    type="text"
-                    id="search-input"
-                    placeholder="Search tasks"
-                />
             </th>
             <th>Created</th>
             <th>Due</th>
@@ -30,7 +39,7 @@
         <tr>
             <td>
                 {% if task.photos.all %}
-                <img src="{{ task.photos.all.first.image.url }}" width="50" />
+                <img src="{{ task.photos.first.image.url }}" width="50" />
                 {% endif %}
             </td>
             <td>
@@ -40,7 +49,7 @@
             <td>{{ task.due_date }}</td>
             <td>{{ task.priority }}</td>
             <td>
-                {% if task.is_complete %}Complete{% else %}Incomplete{% endif %}
+                {% if task.is_complete %}Completed{% else %}In progress{% endif %}
             </td>
         </tr>
         {% empty %}

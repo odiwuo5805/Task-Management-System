@@ -27,9 +27,9 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ('task', 'image')
 
 
-admin.site.site_header = 'Task Manager Admin'
-admin.site.site_title = 'Task Manager Admin'
-admin.site.index_title = 'Task Manager Admin'
+admin.site.site_header = 'Qalibrated Systems Limited'
+admin.site.site_title = 'Qalibrated Systems Limited'
+admin.site.index_title = 'Qalibrated Systems Limited'
 
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Photo, PhotoAdmin)
